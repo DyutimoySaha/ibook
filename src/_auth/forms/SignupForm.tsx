@@ -14,7 +14,7 @@ import { SignupValidation } from "@/lib/validation";
 import { useUserContext } from "@/context/AuthContext";
 import { ClockLoader } from "react-spinners";
 import { useEffect } from "react";
-const SignupForm = () => {
+const SignupForm = ({dark}:{dark:boolean}) => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -86,7 +86,7 @@ const SignupForm = () => {
   return (
     <Form {...form}>
       <div className="sm:w-420 flex-center flex-col">
-        <img src="/assets/images/ibook.png" alt="logo" />
+        <img className={`${dark?"invert":""}`} src="/assets/images/ibook.png" alt="logo" />
 
         <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
           Create a new account
@@ -103,9 +103,9 @@ const SignupForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="shad-form_label">Name</FormLabel>
+                <FormLabel className={`${!dark?"shad-form_label":"text-black"}`}>Name</FormLabel>
                 <FormControl>
-                  <Input type="text" className="shad-input" {...field} />
+                  <Input type="text" className={`${!dark?"shad-input":"#fff text-[#000] border-2 border-indigo-600"}`} {...field} />
                 </FormControl>
                 <FormMessage className="text-red" />
               </FormItem>
@@ -117,9 +117,9 @@ const SignupForm = () => {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="shad-form_label">Username</FormLabel>
+                <FormLabel className={`${!dark?"shad-form_label":"text-black"}`}>Username</FormLabel>
                 <FormControl>
-                  <Input type="text" className="shad-input" {...field} />
+                  <Input type="text" className={`${!dark?"shad-input":"#fff text-[#000] border-2 border-indigo-600"}`} {...field} />
                 </FormControl>
                 <FormMessage className="text-red" />
               </FormItem>
@@ -131,9 +131,9 @@ const SignupForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="shad-form_label">Email</FormLabel>
+                <FormLabel className={`${!dark?"shad-form_label":"text-black"}`}>Email</FormLabel>
                 <FormControl>
-                  <Input type="text" className="shad-input" {...field} />
+                  <Input type="text" className={`${!dark?"shad-input":"#fff text-[#000] border-2 border-indigo-600"}`} {...field} />
                 </FormControl>
                 <FormMessage className="text-red" />
               </FormItem>
@@ -145,9 +145,9 @@ const SignupForm = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="shad-form_label">Password</FormLabel>
+                <FormLabel className={`${!dark?"shad-form_label":"text-black"}`}>Password</FormLabel>
                 <FormControl>
-                  <Input type="password" className="shad-input" {...field} />
+                  <Input type="password" className={`${!dark?"shad-input":"#fff text-[#000] border-2 border-indigo-600"}`} {...field} />
                 </FormControl>
                 <FormMessage className="text-red" />
               </FormItem>
@@ -165,7 +165,7 @@ const SignupForm = () => {
             )}
           </Button>
 
-          <p className="text-small-regular text-light-2 text-center mt-2">
+          <p className={`text-small-regular ${dark ?"text-[#000]":"text-light-2"} text-center mt-2`}>
             Already have an account?
             <Link
               to="/sign-in"
