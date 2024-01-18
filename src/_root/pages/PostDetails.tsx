@@ -29,7 +29,7 @@ const PostDetails = () => {
   };
 
   return (
-    <div className="post_details-container">
+    <div className="post_details-container border-2 border-red-500">
       <div className="hidden md:flex max-w-5xl w-full">
         <Button
           onClick={() => navigate(-1)}

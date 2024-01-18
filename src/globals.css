@@ -278,3 +278,17 @@
     @apply flex gap-4 items-center justify-start hover:bg-transparent hover:text-white !important;
   }
 }
+/* .light-mode{
+  color:black;
+  background-color: #fff;
+} */
+
+.light-mode {
+  background-color: #fff !important;
+  color: black !important;
+}
+
+ .dark-mode{
+  background-color: black !important;
+  color: white !important;
+}

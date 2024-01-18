@@ -1,12 +1,12 @@
-import { Link, NavLink, useNavigate, useLocation} from 'react-router-dom'
-import { Button } from '../ui/button'
-import { useSignOutAccount } from '@/lib/react_query/queries'
-import { useEffect } from 'react';
-import { useUserContext } from '@/context/AuthContext';
-import { INavLink } from '@/types';
 import { sidebarLinks } from '@/constants';
+import { useUserContext } from '@/context/AuthContext';
+import { useSignOutAccount } from '@/lib/react_query/queries';
+import { INavLink } from '@/types';
+import { useEffect } from 'react';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Button } from '../ui/button';
 
-const LeftSidebar = () => {
+const LeftSidebar = ({dark}:{dark:boolean}) => {      
     const {pathname} = useLocation();
     const {mutate: signOut, isSuccess} = useSignOutAccount();
     const navigate = useNavigate();
@@ -15,8 +15,9 @@ const LeftSidebar = () => {
     useEffect(( )=> {
       if (isSuccess) navigate(0);
     }, [isSuccess])
+  
   return (
-    <nav className="leftsidebar">
+    <nav className={`leftsidebar ${dark?'!bg-white':''}`}>
       <div className="flex flex-col gap-11">
       <Link to="/" className="flex gap-3 item-center">
         <img 
@@ -24,6 +25,7 @@ const LeftSidebar = () => {
           alt="logo"
           width={(170)}
           height={36}
+          className={dark?'!invert':''}
           />
         </Link>
 

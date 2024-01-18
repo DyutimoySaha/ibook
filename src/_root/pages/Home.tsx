@@ -8,7 +8,7 @@ import { useGetRecentPosts, useGetUsers } from "@/lib/react_query/queries";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Home = ({dark}:{dark:boolean}) => {
   const navigate = useNavigate();
 
   useEffect(()=> {
@@ -43,17 +43,17 @@ const Home = () => {
   }
 
   return (
-    <div className="flex flex-1">
+    <div className="flex flex-1 h-[100vh] overflow-auto">
       <div className="home-container">
         <div className="home-posts">
           <h2 className="h3-bold md:h2-bold text-left w-full">Home Feed</h2>
           {isPostLoading && !posts ? (
             <Loader />
           ) : (
-            <ul className="flex flex-col flex-1 gap-9 w-full ">
+            <ul className="flex flex-col flex-1 gap-9 w-full">
               {posts?.documents.map((post: Models.Document) => (
                 <li key={post.$id} className="flex justify-center w-full">
-                  <PostCard post={post} />
+                  <PostCard post={post} dark={dark}/>
                 </li>
               ))}
             </ul>
