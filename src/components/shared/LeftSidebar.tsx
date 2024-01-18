@@ -25,6 +25,7 @@ const LeftSidebar = ({dark}:{dark:boolean}) => {
           alt="logo"
           width={(170)}
           height={36}
+          className={dark?'!invert':''}
           />
         </Link>
 

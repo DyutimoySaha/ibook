@@ -6,15 +6,16 @@ import { useUserContext } from "@/context/AuthContext";
 
 type PostCardProps = {
   post: Models.Document;
+  dark:boolean
 };
 
-const PostCard = ({ post }: PostCardProps) => {
+const PostCard = ({ post,dark }: PostCardProps) => {
   const { user } = useUserContext();
 
   if (!post.creator) return;
 
   return (
-    <div className="post-card">
+    <div className={`post-card ${dark?"!bg-white text-black":""}`}>
       <div className="flex-between">
         <div className="flex items-center gap-3">
           <Link to={`/profile/${post.creator.$id}`}>
