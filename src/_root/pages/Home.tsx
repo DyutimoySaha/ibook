@@ -45,9 +45,9 @@ const Home = () => {
 
   return (
     <div className="flex flex-1 h-[100vh] overflow-auto">
-      <div className="home-container">
+      <div className={`home-container ${!dark?"custom-scrollbar":""}`}>
         <div className="home-posts">
-          <h2 className="h3-bold md:h2-bold text-left w-full">Home Feed</h2>
+          <h2 className={`${!dark?"text-white":"text-primary-500"} h3-bold md:h2-bold text-left w-full`}>Home Feed</h2>
           {isPostLoading && !posts ? (
             <Loader />
           ) : (

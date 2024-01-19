@@ -12,7 +12,7 @@ type UserCardProps = {
 const UserCard = ({ user}: UserCardProps ) => {
   const {dark}=useContext(ThemeContext);
   return (
-    <Link to={`/profile/${user.$id}`} className="user-card">
+    <Link to={`/profile/${user.$id}`} className={`user-card !border-1 !border-primary-500 ${!dark?"shadow-md shadow-primary-500":""}`}>
       <img
         src={user.imageUrl || "/assets/icons/profile-placeholder.svg"}
         alt="creator"
