@@ -1,16 +1,17 @@
 import { Models } from "appwrite";
 
 // import { useToast } from "@/components/ui/use-toast";
-import UserCard  from "@/components/shared/UserCard";
-import PostCard from "@/components/shared/PostCard";
 import Loader from "@/components/shared/Loader";
+import PostCard from "@/components/shared/PostCard";
+import UserCard from "@/components/shared/UserCard";
+import { ThemeContext } from "@/context/ThemeContext";
 import { useGetRecentPosts, useGetUsers } from "@/lib/react_query/queries";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Home = ({dark}:{dark:boolean}) => {
+const Home = () => {
+  const {dark}=useContext(ThemeContext);
   const navigate = useNavigate();
-
   useEffect(()=> {
     //logic for getting a value from local storage stored under the key 'key'
     const data = localStorage.getItem('cookieFallback')
@@ -53,7 +54,7 @@ const Home = ({dark}:{dark:boolean}) => {
             <ul className="flex flex-col flex-1 gap-9 w-full">
               {posts?.documents.map((post: Models.Document) => (
                 <li key={post.$id} className="flex justify-center w-full">
-                  <PostCard post={post} dark={dark}/>
+                  <PostCard post={post} />
                 </li>
               ))}
             </ul>
@@ -62,7 +63,7 @@ const Home = ({dark}:{dark:boolean}) => {
       </div>
 
       <div className="home-creators">
-        <h3 className="h3-bold text-light-1">Top Creators</h3>
+        <h3 className={`h3-bold ${!dark?"text-light-1":"text-primary-500"}`}>Top Creators</h3>
         {isUserLoading && !creators ? (
           <Loader />
         ) : (

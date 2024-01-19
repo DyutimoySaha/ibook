@@ -2,8 +2,12 @@ import { useToast } from "@/components/ui/use-toast";
 import Loader  from "@/components/shared/Loader";
 import UserCard from "@/components/shared/UserCard"
 import { useGetUsers } from "@/lib/react_query/queries";
+import { useContext } from "react";
+import { ThemeContext } from "@/context/ThemeContext";
 
 const AllUsers = () => {
+  const {dark}=useContext(ThemeContext);
+  console.log(dark);
   const { toast } = useToast();
 
   const { data: creators, isLoading, isError: isErrorCreators } = useGetUsers();

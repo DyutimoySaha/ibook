@@ -13,9 +13,11 @@ import { SigninValidation } from "@/lib/validation";
 import { useSignInAccount } from "@/lib/react_query/queries";
 import { useUserContext } from "@/context/AuthContext";
 import { ClockLoader } from "react-spinners";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { ThemeContext } from "@/context/ThemeContext";
 
-const SigninForm = ({dark}:{dark:boolean}) => {
+const SigninForm = () => {
+  const {dark}=useContext(ThemeContext);
   const navigate = useNavigate();
 
   useEffect(()=> {

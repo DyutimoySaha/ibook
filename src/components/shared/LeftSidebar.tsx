@@ -2,11 +2,13 @@ import { sidebarLinks } from '@/constants';
 import { useUserContext } from '@/context/AuthContext';
 import { useSignOutAccount } from '@/lib/react_query/queries';
 import { INavLink } from '@/types';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/button';
+import { ThemeContext } from '@/context/ThemeContext';
 
-const LeftSidebar = ({dark}:{dark:boolean}) => {      
+const LeftSidebar = () => {      
+  const {dark}=useContext(ThemeContext);
     const {pathname} = useLocation();
     const {mutate: signOut, isSuccess} = useSignOutAccount();
     const navigate = useNavigate();
