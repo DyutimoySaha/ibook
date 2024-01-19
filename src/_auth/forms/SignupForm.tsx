@@ -13,8 +13,10 @@ import { useCreateUserAccount, useSignInAccount } from "@/lib/react_query/querie
 import { SignupValidation } from "@/lib/validation";
 import { useUserContext } from "@/context/AuthContext";
 import { ClockLoader } from "react-spinners";
-import { useEffect } from "react";
-const SignupForm = ({dark}:{dark:boolean}) => {
+import { useContext, useEffect } from "react";
+import { ThemeContext } from "@/context/ThemeContext";
+const SignupForm = () => {
+  const {dark}=useContext(ThemeContext);
   const { toast } = useToast();
   const navigate = useNavigate();
 

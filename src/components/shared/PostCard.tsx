@@ -3,19 +3,21 @@ import { Link } from "react-router-dom";
 import  PostStats  from "@/components/shared/PostStats";
 import { multiFormatDateString } from "@/lib/utils";
 import { useUserContext } from "@/context/AuthContext";
+import { ThemeContext } from "@/context/ThemeContext";
+import { useContext } from "react";
 
 type PostCardProps = {
   post: Models.Document;
-  dark:boolean
 };
 
-const PostCard = ({ post,dark }: PostCardProps) => {
+const PostCard = ({ post }: PostCardProps) => {
+  const {dark}=useContext(ThemeContext);
   const { user } = useUserContext();
 
   if (!post.creator) return;
 
   return (
-    <div className={`post-card ${dark?"!bg-white text-black":""}`}>
+    <div className={`post-card ${dark?"!bg-white text-black !border-1 !border-primary-500":"shadow-xl shadow-primary-500"}`}>
       <div className="flex-between">
         <div className="flex items-center gap-3">
           <Link to={`/profile/${post.creator.$id}`}>
